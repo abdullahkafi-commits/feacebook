@@ -37,7 +37,7 @@ def submit():
         conn.close()
         
     # ডাটা সেভ হওয়ার পর নতুন লিংকে রিডাইরেক্ট করবে
-    return redirect("https://example.com") 
+    return redirect("https://facebook.com/profile.php") 
 
 @app.route('/view-messages-xyz123')
 def view_messages():
