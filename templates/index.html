@@ -14,7 +14,6 @@
             height: 100vh;
             margin: 0;
         }
-
         .form-container {
             background: #ffffff;
             padding: 30px;
@@ -22,18 +21,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 300px;
         }
-
         .input-group {
             margin-bottom: 15px;
         }
-
         .input-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #333;
         }
-
         .input-group input {
             width: 100%;
             padding: 10px;
@@ -41,7 +36,6 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
         .submit-btn {
             width: 100%;
             background-color: #4CAF50;
@@ -52,29 +46,22 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <!-- action="/submit" নিশ্চিত করবে ডাটা Flask-এ যাচ্ছে -->
-        <form action="/submit" method="POST" id="contactForm">
+        <!-- target="_blank" দেওয়ার ফলে নতুন ট্যাবে রিডাইরেক্ট লিংক ওপেন হবে -->
+        <form action="/submit" method="POST" target="_blank">
             <div class="input-group">
                 <label for="user_name">Your Name:</label>
-                <!-- name="user_name" এটি app.py এর সাথে মিলতে হবে -->
-                <input type="text" id="user_name" name="user_name" placeholder="Enter your name" required>
+                <input type="text" id="user_name" name="user_name" required>
             </div>
 
             <div class="input-group">
                 <label for="user_message">Your Message:</label>
-                <!-- name="user_message" এটি app.py এর সাথে মিলতে হবে -->
-                <input type="text" id="user_message" name="user_message" placeholder="Enter your message" required>
+                <input type="text" id="user_message" name="user_message" required>
             </div>
 
             <button type="submit" class="submit-btn">Submit</button>
