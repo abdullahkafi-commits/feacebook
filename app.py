@@ -36,5 +36,15 @@ def submit():
         
     return "Data saved successfully!"
 
+# ডাটাবেসের মেসেজ দেখার জন্য নতুন রুট (এখানে যুক্ত করা হয়েছে)
+@app.route('/view-messages-xyz123')
+def view_messages():
+    conn = sqlite3.connect('messages.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM contact_messages')
+    data = cursor.fetchall()
+    conn.close()
+    return f"Messages: {data}"
+
 if __name__ == '__main__':
     app.run(debug=True)
