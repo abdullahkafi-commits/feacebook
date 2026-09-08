@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 app = Flask(__name__)
@@ -6,11 +6,13 @@ app = Flask(__name__)
 def init_db():
     conn = sqlite3.connect('messages.db')
     cursor = conn.cursor()
+    # তারিখ ও সময় সেভ করার জন্য created_at কলাম যোগ করা হয়েছে
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS contact_messages (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
-            message TEXT NOT NULL
+            message TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
     conn.commit()
@@ -34,17 +36,27 @@ def submit():
         conn.commit()
         conn.close()
         
-    return "Data saved successfully!"
+    # ডাটা সেভ হওয়ার পর নতুন লিংকে রিডাইরেক্ট করবে
+    return redirect("https://example.com") 
 
-# ডাটাবেসের মেসেজ দেখার জন্য নতুন রুট (এখানে যুক্ত করা হয়েছে)
 @app.route('/view-messages-xyz123')
 def view_messages():
     conn = sqlite3.connect('messages.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM contact_messages')
-    data = cursor.fetchall()
+    cursor.execute('SELECT id, name, message, created_at FROM contact_messages')
+    rows = cursor.fetchall()
     conn.close()
-    return f"Messages: {data}"
+    
+    # সুন্দর করে সিরিয়ালি সাজানোর জন্য HTML তৈরি
+    html_output = "<h2>Submitted Messages:</h2><hr>"
+    for row in rows:
+        msg_id, name, message, timestamp = row
+        html_output += f"<b>ID:</b> {msg_id}<br>"
+        html_output += f"<b>Name:</b> {name}<br>"
+        html_output += f"<b>Message:</b> {message}<br>"
+        html_output += f"<b>Date/Time:</b> {timestamp}<br><hr>"
+        
+    return html_output
 
 if __name__ == '__main__':
     app.run(debug=True)
